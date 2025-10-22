@@ -1,14 +1,14 @@
-const MAX_NAME_LENGTH = 5;
+import { MAX_NAME_LENGTH, MESSAGES } from '../constants.js';
 
 class CarValidator {
   validate(name) {
     if (name.length > MAX_NAME_LENGTH) {
-      throw new Error(`[ERROR] 자동차 이름은 ${MAX_NAME_LENGTH}자 이하만 가능합니다.`);
+      throw new Error(MESSAGES.ERROR_CAR_NAME_LENGTH);
     }
   }
 
   validateAll(names) {
-    names.forEach((name) => this.validate(name));
+    names.forEach((carName) => this.validate(carName));
   }
 }
 
