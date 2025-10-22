@@ -8,7 +8,7 @@ src/
   │   └── Car.js
   ├── controller/
   │   ├── RaceController.js
-  │   └── CarValidator.js
+  │   └── NameValidator.js
   ├── console/
   │   ├── ConsoleInputReader.js
   │   └── ConsoleOutputWriter.js
@@ -25,8 +25,8 @@ src/
 - 전진 시 이동 거리가 1씩 증가
 - 이동 거리를 문자열로 반환 (-)
 
-### CarValidator
-- 자동차 이름은 5자 이하만 가능
+### NameValidator
+- 이름은 5자 이하만 가능
 - 5자 초과 시 [ERROR] 예외 발생
 
 ### RaceController
@@ -35,7 +35,7 @@ src/
 - 최다 전진 자동차 탐색 (공동 우승 가능)
 
 ### ConsoleInputReader
-- 자동차 이름 입력 (쉼표 구분)
+- 이름 입력 (쉼표 구분)
 - 시도 횟수 입력
 
 ### ConsoleOutputWriter

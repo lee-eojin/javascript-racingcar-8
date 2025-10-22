@@ -2,9 +2,9 @@ import { Console } from '@woowacourse/mission-utils';
 import { MESSAGES } from '../constants.js';
 
 class ConsoleInputReader {
-  async readCarNames() {
-    const carNamesInput = await Console.readLineAsync(MESSAGES.INPUT_CAR_NAMES);
-    return carNamesInput.split(',').map((name) => name.trim());
+  async readNames() {
+    const namesInput = await Console.readLineAsync(MESSAGES.INPUT_NAMES);
+    return namesInput.split(',').map((name) => name.trim());
   }
 
   async readRoundCount() {
