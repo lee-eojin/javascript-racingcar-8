@@ -4,15 +4,17 @@
 
 ```
 src/
-  ├── domain/
+  ├── entity/
   │   └── Car.js
-  ├── service/
-  │   ├── CarNameValidator.js
-  │   └── RaceController.js
+  ├── controller/
+  │   ├── RaceController.js
+  │   └── CarValidator.js
   ├── view/
-  │   ├── ConsoleInputView.js
-  │   └── ConsoleOutputView.js
-  └── App.js
+  │   ├── InputView.js
+  │   └── OutputView.js
+  ├── constants.js
+  ├── App.js
+  └── index.js
 ```
 
 ## 기능 목록
