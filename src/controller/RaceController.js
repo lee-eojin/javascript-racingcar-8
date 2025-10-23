@@ -1,6 +1,6 @@
 import { Random } from '@woowacourse/mission-utils';
 import Car from '../entity/Car.js';
-import NameValidator from './NameValidator.js';
+import NameValidator from '../entity/NameValidator.js';
 import { RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER, MIN_FORWARD_VALUE } from '../constants.js';
 
 class RaceController {
@@ -15,7 +15,14 @@ class RaceController {
     this.#cars = names.map((name) => new Car(name));
   }
 
-  playRound() {
+  playGame(roundCount, onRoundComplete) {
+    for (let i = 0; i < roundCount; i++) {
+      this.#playRound();
+      onRoundComplete(this.getCars());
+    }
+  }
+
+  #playRound() {
     this.#cars.forEach((car) => this.#moveCarIfPossible(car));
   }
 

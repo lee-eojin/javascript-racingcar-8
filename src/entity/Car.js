@@ -18,10 +18,6 @@ class Car {
   getPosition() {
     return this.#position;
   }
-
-  getPositionString() {
-    return "-".repeat(this.#position);
-  }
 }
 
 export default Car;
