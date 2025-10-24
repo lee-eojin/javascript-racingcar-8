@@ -1,4 +1,4 @@
-import RaceController from './controller/RaceController.js';
+import RaceController from './controllers/RaceController.js';
 import ConsoleInputReader from './console/ConsoleInputReader.js';
 import ConsoleOutputWriter from './console/ConsoleOutputWriter.js';
 
