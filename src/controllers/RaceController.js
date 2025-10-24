@@ -1,6 +1,6 @@
 import { Random } from '@woowacourse/mission-utils';
-import Car from '../entity/Car.js';
-import NameValidator from '../entity/NameValidator.js';
+import Car from '../entities/Car.js';
+import NameValidator from '../entities/NameValidator.js';
 import { RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER, MIN_FORWARD_VALUE } from '../constants.js';
 
 class RaceController {
