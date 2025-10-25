@@ -8,4 +8,5 @@ export const MESSAGES = {
   INPUT_ROUND_COUNT: '시도할 횟수는 몇 회인가요?\n',
   RESULT_MESSAGE: '\n실행 결과',
   ERROR_NAME_LENGTH: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
+  ERROR_ROUND_COUNT: '[ERROR] 시도 횟수는 1 이상의 정수여야 합니다.',
 };

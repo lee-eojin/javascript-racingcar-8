@@ -9,7 +9,15 @@ class ConsoleInputReader {
 
   async readRoundCount() {
     const roundCountInput = await Console.readLineAsync(MESSAGES.INPUT_ROUND_COUNT);
-    return Number(roundCountInput);
+    const roundCount = Number(roundCountInput);
+    this.#validateRoundCount(roundCount);
+    return roundCount;
+  }
+
+  #validateRoundCount(roundCount) {
+    if (!Number.isInteger(roundCount) || roundCount < 1) {
+      throw new Error(MESSAGES.ERROR_ROUND_COUNT);
+    }
   }
 }
 
