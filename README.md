@@ -27,6 +27,8 @@ src/
 - 전진 시 이동 거리가 1씩 증가
 
 ### NameValidator
+- 이름은 빈 값일 수 없음
+- 빈 값일 경우 [ERROR] 예외 발생
 - 이름은 5자 이하만 가능
 - 5자 초과 시 [ERROR] 예외 발생
 
@@ -39,6 +41,8 @@ src/
 ### ConsoleInputReader
 - 이름 입력 (쉼표 구분)
 - 시도 횟수 입력
+- 시도 횟수는 1 이상의 정수여야 함
+- 유효하지 않은 시도 횟수일 경우 [ERROR] 예외 발생
 
 ### ConsoleOutputWriter
 - 실행 결과 헤더 출력
@@ -52,9 +56,9 @@ src/
 
 프로그램 실행의 시작점인 index.js에서 App 인스턴스를 생성하고 run()을 호출한다. App.run()은 Console.readLineAsync()를 통해 사용자로부터 자동차 이름과 시도 횟수를 입력받는다.
 
-App은 ConsoleInputReader를 통해 입력을 받는다. readNames()는 쉼표로 구분된 이름 문자열을 split(',')로 분리하고 각 이름의 앞뒤 공백을 trim()으로 제거하여 이름 배열을 반환한다. readRoundCount()는 입력받은 문자열을 Number()로 변환하여 시도 횟수를 반환한다.
+App은 ConsoleInputReader를 통해 입력을 받는다. readNames()는 쉼표로 구분된 이름 문자열을 split(',')로 분리하고 각 이름의 앞뒤 공백을 trim()으로 제거하여 이름 배열을 반환한다. readRoundCount()는 입력받은 문자열을 Number()로 변환한 후, 1 이상의 정수인지 검증하고 시도 횟수를 반환한다. 유효하지 않은 값이면 ERROR 메시지와 함께 에러를 발생시킨다.
 
-입력받은 이름 배열은 RaceController의 initCars(names)로 전달된다. initCars()는 먼저 NameValidator 인스턴스를 생성하여 validateNames(names)를 호출한다. NameValidator는 각 이름을 순회하며 길이가 5자를 초과하는지 검증하고, 초과하면 ERROR 메시지와 함께 에러를 발생시킨다.
+입력받은 이름 배열은 RaceController의 initCars(names)로 전달된다. initCars()는 먼저 NameValidator 인스턴스를 생성하여 validateNames(names)를 호출한다. NameValidator는 각 이름을 순회하며 빈 값인지, 길이가 5자를 초과하는지 검증하고, 유효하지 않으면 ERROR 메시지와 함께 에러를 발생시킨다.
 
 검증이 완료되면 이름 배열을 map()으로 순회하며 각 이름으로 Car 객체를 생성한다. Car는 생성 시점에 name을 private 필드에 저장하고 position을 0으로 초기화한다.
 
