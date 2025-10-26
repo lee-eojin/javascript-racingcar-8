@@ -1,7 +1,7 @@
 import { MAX_NAME_LENGTH, MESSAGES } from '../constants.js';
 
 class NameValidator {
-  validateName(name) {
+  static validateName(name) {
     if (name.length === 0) {
       throw new Error(MESSAGES.ERROR_NAME_EMPTY);
     }
@@ -10,8 +10,8 @@ class NameValidator {
     }
   }
 
-  validateNames(names) {
-    names.forEach((name) => this.validateName(name));
+  static validateNames(names) {
+    names.forEach((name) => NameValidator.validateName(name));
   }
 }
 

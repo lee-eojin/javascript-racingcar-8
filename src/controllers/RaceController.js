@@ -11,7 +11,7 @@ class RaceController {
   }
 
   initCars(names) {
-    new NameValidator().validateNames(names);
+    NameValidator.validateNames(names);
     this.#cars = names.map((name) => new Car(name));
   }
 
@@ -23,12 +23,14 @@ class RaceController {
   }
 
   #playRound() {
-    this.#cars.forEach((car) => {
-      const randomValue = Random.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
-      if (randomValue >= MIN_FORWARD_VALUE) {
-        car.move();
-      }
-    });
+    this.#cars.forEach((car) => this.#moveCarByCondition(car));
+  }
+
+  #moveCarByCondition(car) {
+    const randomValue = Random.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
+    if (randomValue >= MIN_FORWARD_VALUE) {
+      car.move();
+    }
   }
 
   getCars() {
