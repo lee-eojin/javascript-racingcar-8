@@ -18,6 +18,10 @@ class Car {
   getPosition() {
     return this.#position;
   }
+
+  isWinner(maxPosition) {
+    return this.#position === maxPosition;
+  }
 }
 
 export default Car;

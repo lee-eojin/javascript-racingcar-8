@@ -23,18 +23,12 @@ class RaceController {
   }
 
   #playRound() {
-    this.#cars.forEach((car) => this.#moveCarIfPossible(car));
-  }
-
-  #moveCarIfPossible(car) {
-    if (this.#checkMoveCondition()) {
-      car.move();
-    }
-  }
-
-  #checkMoveCondition() {
-    const randomValue = Random.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
-    return randomValue >= MIN_FORWARD_VALUE;
+    this.#cars.forEach((car) => {
+      const randomValue = Random.pickNumberInRange(RANDOM_MIN_NUMBER, RANDOM_MAX_NUMBER);
+      if (randomValue >= MIN_FORWARD_VALUE) {
+        car.move();
+      }
+    });
   }
 
   getCars() {
@@ -42,12 +36,8 @@ class RaceController {
   }
 
   getWinners() {
-    const maxPosition = this.#calculateMaxPosition();
-    return this.#cars.filter((car) => car.getPosition() === maxPosition);
-  }
-
-  #calculateMaxPosition() {
-    return Math.max(...this.#cars.map((car) => car.getPosition()));
+    const maxPosition = Math.max(...this.#cars.map((car) => car.getPosition()));
+    return this.#cars.filter((car) => car.isWinner(maxPosition));
   }
 }
 
