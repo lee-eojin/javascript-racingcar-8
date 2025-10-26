@@ -3,28 +3,22 @@ import ConsoleInputReader from './console/ConsoleInputReader.js';
 import ConsoleOutputWriter from './console/ConsoleOutputWriter.js';
 
 class App {
-  #controller;
-  #inputReader;
-  #outputWriter;
-
-  constructor() {
-    this.#controller = new RaceController();
-    this.#inputReader = new ConsoleInputReader();
-    this.#outputWriter = new ConsoleOutputWriter();
-  }
-
   async run() {
-    const names = await this.#inputReader.readNames();
-    const roundCount = await this.#inputReader.readRoundCount();
+    const controller = new RaceController();
+    const inputReader = new ConsoleInputReader();
+    const outputWriter = new ConsoleOutputWriter();
 
-    this.#controller.initCars(names);
-    this.#outputWriter.printResultMessage();
+    const names = await inputReader.readNames();
+    const roundCount = await inputReader.readRoundCount();
 
-    this.#controller.playGame(roundCount, (cars) => {
-      this.#outputWriter.printRoundResult(cars);
+    controller.initCars(names);
+    outputWriter.printResultMessage();
+
+    controller.playGame(roundCount, (cars) => {
+      outputWriter.printRoundResult(cars);
     });
 
-    this.#outputWriter.printWinners(this.#controller.getWinners());
+    outputWriter.printWinners(controller.getWinners());
   }
 }
 
