@@ -1,4 +1,5 @@
 import NameValidator from '../src/entities/NameValidator.js';
+import { MESSAGES } from '../src/constants.js';
 
 describe('NameValidator', () => {
   describe('validateName', () => {
@@ -7,21 +8,21 @@ describe('NameValidator', () => {
       ['eojin'],
       ['a'],
       ['12345'],
-    ])('정상 이름 "%s"', (name) => {
+    ])('정상 이름 통과', (name) => {
       expect(() => NameValidator.validateName(name)).not.toThrow();
     });
 
     it.each([
-      ['', '[ERROR] 자동차 이름은 빈 값일 수 없습니다.'],
-      ['abcdef', '[ERROR] 자동차 이름은 5자 이하만 가능합니다.'],
-      ['toolong', '[ERROR] 자동차 이름은 5자 이하만 가능합니다.'],
-    ])('잘못된 이름 "%s"', (name, errorMessage) => {
+      ['', MESSAGES.ERROR_NAME_EMPTY],
+      ['abcdef', MESSAGES.ERROR_NAME_LENGTH],
+      ['toolong', MESSAGES.ERROR_NAME_LENGTH],
+    ])('잘못된 이름 에러 발생', (name, errorMessage) => {
       expect(() => NameValidator.validateName(name)).toThrow(errorMessage);
     });
   });
 
   describe('validateNames', () => {
-    it('모든 이름이 정상일 때', () => {
+    it('모든 이름이 정상', () => {
       expect(() => NameValidator.validateNames(['pobi', 'eojin', 'lej'])).not.toThrow();
     });
 

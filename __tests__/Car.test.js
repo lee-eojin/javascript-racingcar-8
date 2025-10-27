@@ -1,18 +1,18 @@
 import Car from '../src/entities/Car.js';
 
 describe('Car', () => {
-  test('생성 시 position은 0이다', () => {
+  it('생성 시 position은 0', () => {
     const car = new Car('pobi');
     expect(car.getPosition()).toBe(0);
   });
 
-  test('move 호출 시 position이 1 증가', () => {
+  it('move 호출 시 position이 1 증가', () => {
     const car = new Car('pobi');
     car.move();
     expect(car.getPosition()).toBe(1);
   });
 
-  test('move를 여러 번 호출하면 position이 누적', () => {
+  it('move를 여러 번 호출하면 position이 누적', () => {
     const car = new Car('pobi');
     car.move();
     car.move();
@@ -20,15 +20,17 @@ describe('Car', () => {
     expect(car.getPosition()).toBe(3);
   });
 
-  test.each([
-    [5, 5, true],
-    [3, 5, false],
-    [0, 0, true],
-  ])('position %i, maxPosition %i일 때 isWinner는 %s를 반환', (position, maxPosition, expected) => {
-    const car = new Car('pobi');
-    for (let i = 0; i < position; i++) {
-      car.move();
-    }
-    expect(car.isWinner(maxPosition)).toBe(expected);
+  describe('isWinner', () => {
+    it.each([
+      ['eojin', 5, 5, true], // 우승
+      ['lej', 3, 5, false], // 우승못함
+      ['pobi', 0, 0, true], // 공동우승함
+    ])('우승 여부 정확히 판단', (name, position, maxPosition, expected) => {
+      const car = new Car(name);
+      for (let i = 0; i < position; i++) {
+        car.move();
+      }
+      expect(car.isWinner(maxPosition)).toBe(expected);
+    });
   });
 });
