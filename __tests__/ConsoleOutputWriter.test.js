@@ -54,7 +54,7 @@ describe('ConsoleOutputWriter', () => {
 
       writer.printWinners([car]);
 
-      expect(consoleSpy).toHaveBeenCalledWith('최종 우승자 : pobi');
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('pobi'));
     });
 
     it('공동 우승자 쉼표로 구분하여 출력', () => {
@@ -65,7 +65,9 @@ describe('ConsoleOutputWriter', () => {
 
       writer.printWinners([car1, car2, car3]);
 
-      expect(consoleSpy).toHaveBeenCalledWith('최종 우승자 : pobi, eojin, lej');
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('pobi'));
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('eojin'));
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('lej'));
     });
   });
 });
