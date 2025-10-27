@@ -12,6 +12,14 @@ class NameValidator {
 
   static validateNames(names) {
     names.forEach((name) => NameValidator.validateName(name));
+    NameValidator.validateDuplicates(names);
+  }
+
+  static validateDuplicates(names) {
+    const uniqueNames = new Set(names);
+    if (uniqueNames.size !== names.length) {
+      throw new Error(MESSAGES.ERROR_NAME_DUPLICATE);
+    }
   }
 }
 

@@ -9,5 +9,6 @@ export const MESSAGES = Object.freeze({
   RESULT_MESSAGE: '\n실행 결과',
   ERROR_NAME_EMPTY: '[ERROR] 자동차 이름은 빈 값일 수 없습니다.',
   ERROR_NAME_LENGTH: '[ERROR] 자동차 이름은 5자 이하만 가능합니다.',
+  ERROR_NAME_DUPLICATE: '[ERROR] 중복된 자동차 이름이 있습니다.',
   ERROR_ROUND_COUNT: '[ERROR] 시도 횟수는 1 이상의 정수여야 합니다.',
 });

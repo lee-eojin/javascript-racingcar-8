@@ -29,5 +29,9 @@ describe('NameValidator', () => {
     it('하나라도 잘못된 이름이 있을 때', () => {
       expect(() => NameValidator.validateNames(['pobi', 'toolong', 'eojin'])).toThrow('[ERROR]');
     });
+
+    it('중복된 이름이 있을 때', () => {
+      expect(() => NameValidator.validateNames(['pobi', 'eojin', 'pobi'])).toThrow(MESSAGES.ERROR_NAME_DUPLICATE);
+    });
   });
 });
