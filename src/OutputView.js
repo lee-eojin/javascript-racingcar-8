@@ -5,8 +5,11 @@ class OutputView {
     Console.print("실행결과");
   }
 
-  printRacing(cars) {
-    cars.forEach(car => Console.print(car.getResult()));
+  printRound(cars) {
+    cars.forEach((car) => {
+      const progress = "-".repeat(car.position);
+      Console.print(`${car.name} : ${progress}`);
+    });
   }
 
   printNewLine() {
