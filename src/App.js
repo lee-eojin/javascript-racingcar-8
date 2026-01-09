@@ -3,22 +3,41 @@ import InputView from "./InputView.js";
 import OutputView from "./OutputView.js";
 
 class App {
+
   async run() {
+
     const inputView = new InputView();
     const outputView = new OutputView();
 
-    const cars = await inputView.readCars();
-    // 그럼 여기에 ["pobi" , "woni"] 가 나왔을것임.
+    const carNames = await this.#readCarNames(inputView);
+    const tryCount = await this.#readTryCount(inputView);
 
-    this.#validateCarName(cars);
-    // 그럼 이제 자동차 이름을 검증해야함.
+
+
+
+
+
   }
 
-  #validateCarName(names) {
-    if (names.some((name) => name.length > 5)) {
-      throw new Error("[ERROR] 이름은 5글자 이하여야 합니다.");
+  async #readCarNames(inputView) {
+    const input = await inputView.readCarNames();
+    const names = input.split(",").map(s => s.trim());
+    this.#validateCarNames(names);
+    return names;
+  }
+
+  #validateCarNames(names) {
+    if (names.some(name => name.length > 5)) {
+      throw new Error("[ERROR] 이름은 5글자 이하여야 합니다.")
     }
   }
+
+  async #readTryCount(inputView) {
+
+  }
+
+
+
 }
 
 export default App;

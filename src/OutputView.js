@@ -5,8 +5,8 @@ class OutputView {
     Console.print("실행결과");
   }
 
-  printRacing(car, count) {
-    Console.print(`${car} : ${count}`);
+  printRacing(cars) {
+    cars.forEach(car => Console.print(car.getResult()));
   }
 
   printNewLine() {
